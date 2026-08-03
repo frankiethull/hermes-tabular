@@ -1,0 +1,101 @@
+# hermes-tabular default policy values.
+# The `tabular` skill reads this file so prose policy stays stable while numbers evolve.
+
+version: 1
+
+dataset_size:
+  # Row-count bands used by the decision rules in SKILL.md.
+  very_small_max: 1000
+  small_max: 50000
+  # Above small_max the dataset is "large".
+  # TabICL degrades past this; skip it unless the user insists.
+  tabicl_row_ceiling: 100000
+  tabicl_feature_ceiling: 2000
+  # Below this, refuse to model and ask the user.
+  refuse_below: 50
+
+task_detection:
+  # Numeric target with <= this many distinct values is treated as classification.
+  max_unique_for_classification: 20
+  # Float dtype with more distinct values than this is always regression.
+  min_unique_for_regression: 25
+  # Class share below this flags imbalance handling.
+  imbalance_minority_threshold: 0.10
+
+split:
+  test_size: 0.2
+  validation_size: 0.2
+  random_state: 42
+  # Use cross-validation instead of a single holdout below this row count.
+  cv_below_rows: 5000
+  cv_folds: 5
+  cv_folds_small: 10
+  # Minimum rows required in a test fold before warning.
+  min_test_rows: 30
+
+metrics:
+  binary_classification:
+    primary: roc_auc
+    secondary: [average_precision, brier_score, log_loss, f1]
+  multiclass_classification:
+    primary: macro_f1
+    secondary: [balanced_accuracy, log_loss]
+  regression:
+    primary: rmse
+    secondary: [mae, r2, mape]
+  # Metric reported alongside every model to check calibration.
+  calibration: brier_score
+
+models:
+  baseline:
+    # Regularization search grid for the linear/logistic baseline.
+    C_grid: [0.01, 0.1, 1.0, 10.0]
+    alpha_grid: [0.01, 0.1, 1.0, 10.0]
+    max_iter: 2000
+    standardize_numeric: true
+    one_hot_max_cardinality: 30
+
+  catboost:
+    iterations: 2000
+    learning_rate: null      # null => let CatBoost auto-select
+    depth: 6
+    l2_leaf_reg: 3.0
+    early_stopping_rounds: 100
+    random_seed: 42
+    verbose: 200
+    # Only tune if the baseline-to-CatBoost gap is small and budget allows.
+    tune_if_time_budget_seconds_above: 600
+    tuning_trials: 20
+
+  tabicl:
+    kv_cache: true
+    device: auto             # auto | cpu | cuda
+    random_state: 42
+    # Fall back to CatBoost rather than waiting longer than this.
+    max_fit_seconds: 900
+
+  ensemble:
+    # Only ensemble if it beats the best single model by at least this much,
+    # measured on the same held-out data, relative to the primary metric.
+    min_relative_improvement: 0.005
+    method: average          # average | rank_average | stacking
+    stacking_meta_learner: logistic_regression
+    max_members: 3
+
+uncertainty:
+  conformal_alpha: 0.1       # 90% prediction intervals
+  calibration_fraction: 0.2
+  classification_method: calibrated_probabilities
+  regression_method: split_conformal
+
+checkpoint:
+  directory: artifacts/models
+  format: joblib
+  save_metrics: true
+  save_feature_names: true
+  save_preprocessing: true
+
+runtime:
+  # Soft wall-clock budget for the full workflow before reporting best-so-far.
+  total_budget_seconds: 1800
+  n_jobs: -1
