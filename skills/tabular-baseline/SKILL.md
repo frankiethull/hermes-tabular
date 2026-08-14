@@ -1,6 +1,6 @@
 ---
 name: tabular-baseline
-description: Fit a fast, interpretable linear or logistic regression baseline with automatic task detection, preprocessing, and regularization selection. Establishes the reference number that answers whether a complex model actually helped.
+description: Fast linear/logistic baseline with auto task detection, CV reg
 ---
 
 # Purpose

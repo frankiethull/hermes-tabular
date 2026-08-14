@@ -1,6 +1,6 @@
 ---
 name: tabular-catboost
-description: Train gradient boosted trees with CatBoost for classification or regression. Handles categorical features natively, uses early stopping against a validation set, and reports feature importance. The default strong model for most tabular problems.
+description: CatBoost gradient trees for classification/regression, native cats
 ---
 
 # Purpose

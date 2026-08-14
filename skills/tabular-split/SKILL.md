@@ -1,6 +1,6 @@
 ---
 name: tabular-split
-description: Choose and execute an honest train/validation/test split. Supports random, stratified, time-aware, and grouped splitting plus cross-validation. Prevents leakage between folds and guarantees evaluation reflects deployment conditions.
+description: Split data: random, stratified, time-aware
 ---
 
 # Purpose

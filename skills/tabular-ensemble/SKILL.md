@@ -1,6 +1,6 @@
 ---
 name: tabular-ensemble
-description: Combine baseline, CatBoost, and TabICL predictions through simple averaging, rank averaging, or shallow stacking. Only adopt the ensemble when held-out evaluation demonstrates a real improvement over the best single model.
+description: Combine models: baseline + CatBoost + TabICL with ensemble validation
 ---
 
 # Purpose

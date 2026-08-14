@@ -1,6 +1,6 @@
 ---
 name: tabular-load
-description: Load tabular data from CSV, Parquet, Excel, JSON, or SQL into a typed pandas DataFrame. Handles delimiters, encodings, dtype inference, datetime parsing, and memory reduction. Produces the canonical DataFrame all other tabular skills operate on.
+description: Load tabular data with auto-detect types
 ---
 
 # Purpose

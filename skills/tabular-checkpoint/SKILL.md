@@ -1,6 +1,6 @@
 ---
 name: tabular-checkpoint
-description: Persist and restore fitted tabular models with full metadata — preprocessing, feature schema, metrics, split definition, and environment. Enables fast repeated scoring without retraining and makes results reproducible.
+description: Persist/restore fitted tabular models with metadata
 ---
 
 # Purpose

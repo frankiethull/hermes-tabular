@@ -1,6 +1,6 @@
 ---
 name: tabular-tabicl
-description: Apply the TabICL tabular foundation model for in-context classification and regression. Strong out-of-the-box accuracy on small and medium datasets with no hyperparameter tuning. Use when data fits within its scale limits and predictive performance matters most.
+description: TabICL: zero-tuning, small-data accuracy
 ---
 
 # Purpose

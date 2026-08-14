@@ -1,6 +1,6 @@
 ---
 name: tabular
-description: End-to-end tabular machine learning orchestration. Inspect data, select an appropriate modeling strategy, evaluate honestly, quantify uncertainty when requested, and persist models for future scoring.
+description: Tabular ML: inspect, model, evaluate, persist
 ---
 
 # Purpose

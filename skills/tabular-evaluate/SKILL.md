@@ -1,6 +1,6 @@
 ---
 name: tabular-evaluate
-description: Evaluate tabular models honestly on held-out data. Selects task-appropriate metrics, reports uncertainty around estimates, checks calibration and subgroup performance, and compares candidates on identical splits.
+description: Evaluate models honestly on held-out data
 ---
 
 # Purpose

@@ -1,6 +1,6 @@
 ---
 name: tabular-inspect
-description: Profile a tabular dataset before modeling. Detect task type, column roles, missingness, cardinality, imbalance, leakage risk, and temporal or group structure. Produces a data profile that downstream tabular skills consume.
+description: Profile dataset: task type, missingness, cardinality
 ---
 
 # Purpose

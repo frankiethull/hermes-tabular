@@ -1,6 +1,6 @@
 ---
 name: tabular-uncertainty
-description: Quantify predictive uncertainty. Produce conformal prediction intervals for regression, calibrated probabilities and optional prediction sets for classification, with finite-sample coverage guarantees and honest caveats about their limits.
+description: Quantify uncertainty with conformal intervals
 ---
 
 # Purpose
