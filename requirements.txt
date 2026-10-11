@@ -1,20 +1,20 @@
 # Core — always required
-numpy>=1.24
-pandas>=2.0
-scikit-learn>=1.4
-pyarrow>=14.0
-joblib>=1.3
-pyyaml>=6.0
+numpy>=1.24,<3
+pandas>=2.0,<3
+scikit-learn>=1.4,<2
+pyarrow>=14.0,<23
+joblib>=1.3,<2
+pyyaml>=6.0,<7
 
 # Tree-based default
-catboost>=1.2
+catboost>=1.2,<2
 
 # Foundation model (pulls torch; heavy — drop this line for a lean install)
-tabicl>=2.0
-torch>=2.2
+tabicl>=2.0,<3
+torch>=2.2,<3
 
 # Uncertainty
-mapie>=0.8
+mapie>=0.8,<2
 
 # Plotting for evaluation artifacts (optional but assumed by tabular-evaluate)
-matplotlib>=3.8
+matplotlib>=3.8,<4
