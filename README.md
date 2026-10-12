@@ -84,6 +84,23 @@ hermes-tabular/
 
 ## Install
 
+### As a Hermes plugin (recommended)
+
+If you use Hermes Agent, install the pack as a plugin. Hermes resolves the
+Python environment from `pyproject.toml` and registers every skill
+automatically, namespaced as `hermes-tabular:<skill>` — invoke only
+`hermes-tabular:tabular`, the orchestrator.
+
+```bash
+hermes plugins install hermes-tabular --enable                  # once listed in the community plugin catalog
+hermes plugins install frankiethull/hermes-tabular --enable     # direct from git, before catalog listing
+```
+
+No manual copying of skill files is needed in this mode. The two sections
+below ("For Humans / System Setup" and "For Agents / Skill Deployment")
+describe the manual path, which remains available for other harnesses.
+
+
 **Two different audiences do two different jobs here.** Read only your section.
 
 | | Who | Does what | How often |
